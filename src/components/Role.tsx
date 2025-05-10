@@ -1,8 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import GooeyDropdown from "./Gooey"; // Uncomment if you're using a Gooey dropdown
-
 interface RoleButtonProps {
   role: string;
   isOpen: boolean;
@@ -161,13 +159,16 @@ const RoleSwitcher: React.FC = () => {
   }, [handleKeyDown]);
 
   return (
-    <div className="relative inline-block" ref={containerRef}>
+    <div
+      className="relative inline-flex items-center space-x-2"
+      ref={containerRef}
+    >
       <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-800 font-medium">
         Building visually striking, inclusive, and intuitive digital spaces as a
       </h1>
 
       {/* Role Button + Dropdown Container */}
-      <div className="relative inline-block mt-2">
+      <div className="relative inline-block">
         <AnimatePresence mode="wait">
           <motion.span
             key={selectedRole}
@@ -181,17 +182,15 @@ const RoleSwitcher: React.FC = () => {
               isOpen={isDropdownOpen}
               onClick={toggleDropdown}
             />
+            <RoleDropdown
+              isOpen={isDropdownOpen}
+              roles={roles}
+              selectedRole={selectedRole}
+              onRoleSelect={handleRoleSelect}
+              onClose={closeDropdown}
+            />
           </motion.span>
         </AnimatePresence>
-
-        <RoleDropdown
-          isOpen={isDropdownOpen}
-          roles={roles}
-          selectedRole={selectedRole}
-          onRoleSelect={handleRoleSelect}
-          onClose={closeDropdown}
-        />
-        <GooeyDropdown></GooeyDropdown>
       </div>
     </div>
   );
