@@ -3,16 +3,16 @@ import Works from "./components/Works";
 import Awards from "./components/Awards";
 import Expertise from "./components/Expertise";
 import Contact from "./components/Contact";
-
+import { RoleProvider } from "./lib/RoleContext";
 function App() {
   return (
-    <div className="min-h-screen bg-background">
+    <RoleProvider>
       <Hero />
       <Works />
       <Awards />
       <Expertise />
       <Contact />
-    </div>
+    </RoleProvider>
   );
 }
 

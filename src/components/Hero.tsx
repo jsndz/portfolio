@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./ScrollIndicator";
-import SpecializingIn from "./As";
+import { useRole } from "../lib/RoleContext";
 import MenuItems from "./NavItems";
 import RoleSwitcher from "./Role";
 const scrollToSection = (id: string) => {
@@ -13,9 +13,10 @@ const scrollToSection = (id: string) => {
 };
 
 const Hero: React.FC = () => {
+  const { roleDetails } = useRole();
   return (
-    <section className="h-screen w-full relative overflow-hidden flex flex-col justify-start">
-      <div className="container mx-auto px-6 md:px-0">
+    <section className="h-screen w-full relative overflow-hidden flex flex-col justify-start bg-[url('/bg.jpg')]">
+      <div className="  px-6 ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
           className="mb-12"
         >
           <h1
-            className="text-5xl md:text-7xl lg:text-[13.5rem] font-bold tracking-tight leading-none"
+            className=" text-5xl md:text-7xl lg:text-[15.5rem] font-bold tracking-tight w-full leading-none"
             style={{
               backgroundImage:
                 "url(https://cdn.prod.website-files.com/66571474d48f3e8c7c14896c/66571474d48f3e8c7c1489aa_hero-heading-bg.jpg)",
@@ -46,7 +47,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                className="text-xs font-medium bg-lightgray px-3 py-1"
+                className="text-xs font-medium bg-gray-300 px-3 py-1"
               >
                 #{tag}
               </motion.span>
@@ -54,22 +55,9 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="text-lg md:text-xl lg:text-2xl font-semibold max-w-2xl"
-        >
-          Building visually striking, inclusive, and intuitive digital spaces.
-        </motion.p> */}
         <RoleSwitcher></RoleSwitcher>
-        <div className="flex justify-between items-center mt-12 relative">
-          <div className="w-full md:w-1/2">
-            <MenuItems onItemSelect={scrollToSection} />
-          </div>
-          {/* <div className="w-full md:w-1/2 absolute right-0 top-0">
-            <SpecializingIn />
-          </div> */}
+        <div className="flex items-center justify-between gap-8 mt-12 relative">
+          <MenuItems onItemSelect={scrollToSection} />
         </div>
       </div>
 
