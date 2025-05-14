@@ -3,3 +3,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-color: #111111;
+  --background-color: #f9f9f9;
+  --secondary-color: #333333;
+  --tertiary-color: #666666;
+  --accent-color: #888888;
+}
+
+.bg-dynamic {
+  background-color: var(--background-color) !important;
+}
+
+.text-dynamic {
+  color: var(--primary-color) !important;
+}
+
+.border-dynamic {
+  border-color: var(--primary-color) !important;
+}

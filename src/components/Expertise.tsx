@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import SectionHeading from './SectionHeading';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./SectionHeading";
 
 interface Skill {
   id: number;
@@ -27,22 +27,26 @@ const services: Service[] = [
   {
     id: 1,
     title: "Brand Identity",
-    description: "Crafting distinctive brand identities that resonate with target audiences and stand out in competitive markets."
+    description:
+      "Crafting distinctive brand identities that resonate with target audiences and stand out in competitive markets.",
   },
   {
     id: 2,
     title: "UI/UX Design",
-    description: "Creating intuitive user interfaces and seamless experiences that enhance user engagement and satisfaction."
+    description:
+      "Creating intuitive user interfaces and seamless experiences that enhance user engagement and satisfaction.",
   },
   {
     id: 3,
     title: "Webflow Development",
-    description: "Building responsive, high-performance websites with Webflow's powerful CMS and animation capabilities."
+    description:
+      "Building responsive, high-performance websites with Webflow's powerful CMS and animation capabilities.",
   },
   {
     id: 4,
     title: "Framer Prototyping",
-    description: "Developing interactive prototypes that accurately represent the final product's functionality and design."
+    description:
+      "Developing interactive prototypes that accurately represent the final product's functionality and design.",
   },
 ];
 
@@ -58,10 +62,10 @@ const Expertise: React.FC = () => {
   });
 
   return (
-    <section id="expertise" className="min-h-screen py-20 md:py-32">
+    <section id="expertise" className="bg-dynamic min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading number="04" title="Expertise" />
-        
+
         <div className="mt-16 md:mt-24 grid md:grid-cols-2 gap-16">
           <div>
             <h3 className="text-2xl font-medium mb-8">Skills</h3>
@@ -73,10 +77,12 @@ const Expertise: React.FC = () => {
                     <span className="opacity-50">{skill.percentage}%</span>
                   </div>
                   <div className="h-1 w-full bg-lightgray">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-primary"
                       initial={{ width: 0 }}
-                      animate={skillsInView ? { width: `${skill.percentage}%` } : {}}
+                      animate={
+                        skillsInView ? { width: `${skill.percentage}%` } : {}
+                      }
                       transition={{ duration: 1, delay: index * 0.1 }}
                     ></motion.div>
                   </div>
@@ -84,19 +90,21 @@ const Expertise: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-2xl font-medium mb-8">Services</h3>
             <div ref={servicesRef} className="space-y-8">
               {services.map((service, index) => (
-                <motion.div 
+                <motion.div
                   key={service.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <h4 className="text-xl font-medium mb-2">{service.title}</h4>
-                  <p className="text-tertiary leading-relaxed">{service.description}</p>
+                  <p className="text-tertiary leading-relaxed">
+                    {service.description}
+                  </p>
                 </motion.div>
               ))}
             </div>

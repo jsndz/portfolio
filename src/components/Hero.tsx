@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./ScrollIndicator";
-import { useRole } from "../lib/RoleContext";
 import MenuItems from "./NavItems";
 import RoleSwitcher from "./Role";
 const scrollToSection = (id: string) => {
@@ -13,7 +12,6 @@ const scrollToSection = (id: string) => {
 };
 
 const Hero: React.FC = () => {
-  const { roleDetails } = useRole();
   return (
     <section className="h-screen w-full relative overflow-hidden flex flex-col justify-start bg-[url('/bg.jpg')]">
       <div className="  px-6 ">

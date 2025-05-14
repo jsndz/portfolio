@@ -1,16 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useRef, useState, useEffect, useCallback } from "react";
-import { useRole } from "../lib/RoleContext";
-
-export const roles = [
-  "Developer",
-  "Frontend Developer",
-  "Backend Developer",
-  "Full-Stack Developer",
-];
-
-export type Role = (typeof roles)[number];
+import React, { useRef, useState, useEffect } from "react";
+import { rolesConfig, useRoleContext } from "../context/RoleContext";
 
 interface RoleButtonProps {
   role: string;
@@ -41,9 +32,9 @@ const RoleButton: React.FC<RoleButtonProps> = ({ role, isOpen, onClick }) => {
 
 interface RoleDropdownProps {
   isOpen: boolean;
-  roles: Role[];
-  selectedRole: Role;
-  onRoleSelect: (role: Role) => void;
+  roles: string[];
+  selectedRole: string;
+  onRoleSelect: (role: string) => void;
   onClose: () => void;
 }
 
@@ -98,7 +89,10 @@ const RoleDropdown: React.FC<RoleDropdownProps> = ({
                     : "text-gray-700 hover:bg-gray-50"
                 }`}
                 whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
-                onClick={() => onRoleSelect(role)}
+                onClick={() => {
+                  onRoleSelect(role);
+                  onClose();
+                }}
                 role="option"
                 aria-selected={role === selectedRole}
               >
@@ -113,15 +107,16 @@ const RoleDropdown: React.FC<RoleDropdownProps> = ({
 };
 
 const RoleSwitcher: React.FC = () => {
-  const { selectedRole, setSelectedRole } = useRole();
+  const { state, dispatch } = useRoleContext();
+  const roles = Object.keys(rolesConfig);
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   const closeDropdown = () => setIsDropdownOpen(false);
 
-  const handleRoleSelect = (role: Role) => {
-    setSelectedRole(role);
-    closeDropdown();
+  const handleRoleSelect = (role: any) => {
+    dispatch({ type: "SET_ROLE", payload: role });
   };
 
   return (
@@ -132,14 +127,14 @@ const RoleSwitcher: React.FC = () => {
 
       <div className="relative inline-block">
         <RoleButton
-          role={selectedRole}
+          role={state.role}
           isOpen={isDropdownOpen}
           onClick={toggleDropdown}
         />
         <RoleDropdown
           isOpen={isDropdownOpen}
           roles={roles}
-          selectedRole={selectedRole}
+          selectedRole={state.role}
           onRoleSelect={handleRoleSelect}
           onClose={closeDropdown}
         />

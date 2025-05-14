@@ -3,7 +3,7 @@ import Works from "./components/Works";
 import Awards from "./components/Awards";
 import Expertise from "./components/Expertise";
 import Contact from "./components/Contact";
-import { RoleProvider } from "./lib/RoleContext";
+import { RoleProvider } from "./context/RoleContext";
 function App() {
   return (
     <RoleProvider>
