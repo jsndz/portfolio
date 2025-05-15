@@ -1,7 +1,8 @@
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
-import { rolesConfig, useRoleContext } from "../context/RoleContext";
+import { useRoleContext } from "../context/RoleContext";
+import { rolesConfig } from "../context/types";
 
 interface RoleButtonProps {
   role: string;
