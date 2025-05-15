@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { rolesConfig, techStack, TechStack } from "./types";
+import { rolesConfig } from "./types";
 
 type Role = keyof typeof rolesConfig;
 
@@ -8,7 +8,6 @@ interface RoleContextType {
   setSelectedRole: React.Dispatch<React.SetStateAction<Role>>;
   roleDetails: {
     projectIds: string[];
-    techStack: TechStack[];
     languages: string[];
     tools: string[];
     databases?: string[];
@@ -33,9 +32,6 @@ export const RoleProvider: React.FC<{ children: React.ReactNode }> = ({
   const roleDetails = {
     ...roleConfig,
     projectIds: roleConfig.projectIds.map((id) => id.toString()),
-    techStack: roleConfig.techStackIds.map(
-      (id) => techStack.find((stack) => stack.id === id)!
-    ),
   };
 
   useEffect(() => {

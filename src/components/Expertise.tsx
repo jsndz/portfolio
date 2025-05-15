@@ -4,98 +4,126 @@ import { useInView } from "react-intersection-observer";
 import SectionHeading from "./SectionHeading";
 import { useRole } from "../context/RoleContext";
 import { rolesConfig } from "../context/types";
-import { getTechStackForRole } from "../context/utils";
 
-interface IconGridProps {
+interface Service {
+  id: number;
   title: string;
-  items: string[];
-  delayOffset?: number;
+  description: string;
 }
 
-const IconGrid: React.FC<IconGridProps> = ({
+const services: Service[] = [
+  {
+    id: 1,
+    title: "Backend Architecture & Microservices",
+    description:
+      "Building scalable, distributed systems with Go and Node.js, leveraging microservices architecture for maintainability and scalability.",
+  },
+  {
+    id: 2,
+    title: "API Development & Integration",
+    description:
+      "Designing and integrating REST APIs, GraphQL services, and real-time communication with WebSocket and WebRTC.",
+  },
+  {
+    id: 3,
+    title: "Frontend Development",
+    description:
+      "Crafting modern UIs with React, Next.js, and TypeScript, optimized for performance and accessibility.",
+  },
+  {
+    id: 4,
+    title: "Database Management",
+    description:
+      "Efficient database design, indexing, and query optimization using MongoDB, PostgreSQL, and distributed database systems.",
+  },
+  {
+    id: 5,
+    title: "Cloud Deployment & CI/CD",
+    description:
+      "Deploying scalable applications on AWS, GCP, and DigitalOcean with Docker, Kubernetes, and CI/CD pipelines.",
+  },
+  {
+    id: 6,
+    title: "Real-time Applications",
+    description:
+      "Developing low-latency, real-time applications using WebRTC and WebSocket for interactive experiences.",
+  },
+];
+
+const SkillCategory: React.FC<{ title: string; skills: string[] }> = ({
   title,
-  items,
-  delayOffset = 0,
-}) => {
-  return (
-    <div>
-      <h4 className="text-xl font-medium mb-4">{title}</h4>
-      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {items.map((item, index) => (
-          <motion.img
-            key={index}
-            src={item}
-            alt={title}
-            className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: (index + delayOffset) * 0.05 }}
-          />
-        ))}
-      </div>
+  skills,
+}) => (
+  <div>
+    <h4 className="text-xl font-medium mb-4">{title}</h4>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {skills.map((skill, index) => (
+        <motion.div
+          key={index}
+          className="flex items-center gap-4 p-2 bg-gray-100 rounded-md"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: index * 0.05 }}
+        >
+          <img src={skill} alt="icon" className="w-8 h-8 object-contain" />
+          <span className="text-md">
+            {skill.split("/").pop()?.split(".")[0]}
+          </span>
+        </motion.div>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 const Expertise: React.FC = () => {
   const { selectedRole } = useRole();
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const role = rolesConfig[selectedRole];
-  const techStacks = getTechStackForRole(selectedRole);
-  const { languages = [], tools = [], databases = [] } = role || {};
+
+  const { ref: skillsRef, inView: skillsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: servicesRef, inView: servicesInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <section id="expertise" className="bg-dynamic min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading number="04" title="Expertise" />
 
-        <div ref={ref} className="mt-16 md:mt-24 space-y-20">
-          {/* Tech Stack Section */}
+        <div className="mt-16 md:mt-24 grid md:grid-cols-2 gap-16">
           <div>
-            <h3 className="text-2xl font-medium mb-8">Tech Stack</h3>
-            <div className="space-y-8">
-              {techStacks.map((tech, techIndex) => (
-                <div key={tech.id}>
-                  <p className="font-semibold mb-2">{tech.name}</p>
-                  <motion.div
-                    className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {tech.logos.map((logo, i) => (
-                      <img
-                        key={i}
-                        src={logo}
-                        alt={tech.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
-                      />
-                    ))}
-                  </motion.div>
-                </div>
+            <h3 className="text-2xl font-medium mb-8">Skills</h3>
+
+            <div ref={skillsRef} className="space-y-8">
+              <SkillCategory title="Languages" skills={role.languages} />
+              <SkillCategory title="Databases" skills={role.databases} />
+              <SkillCategory title="Tools" skills={role.tools} />
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-medium mb-8">Services</h3>
+            <div ref={servicesRef} className="space-y-8">
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={servicesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <h4 className="text-xl font-medium mb-2">{service.title}</h4>
+                  <p className="text-tertiary leading-relaxed">
+                    {service.description}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>
-
-          {/* Languages & Tools Section */}
-          <div className="grid md:grid-cols-2 gap-12">
-            <IconGrid title="Languages" items={languages} />
-            <IconGrid
-              title="Tools"
-              items={tools}
-              delayOffset={languages.length}
-            />
-          </div>
-
-          {/* Databases Section */}
-          {databases.length > 0 && (
-            <div>
-              <h3 className="text-2xl font-medium mb-8">Databases</h3>
-              <IconGrid title="Databases" items={databases} />
-            </div>
-          )}
         </div>
       </div>
     </section>
