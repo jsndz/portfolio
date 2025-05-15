@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
-import { useRoleContext } from "../context/RoleContext";
+import { useRole } from "../context/RoleContext";
 import { rolesConfig } from "../context/types";
 
 interface RoleButtonProps {
@@ -108,7 +108,7 @@ const RoleDropdown: React.FC<RoleDropdownProps> = ({
 };
 
 const RoleSwitcher: React.FC = () => {
-  const { state, dispatch } = useRoleContext();
+  const { selectedRole, setSelectedRole } = useRole();
   const roles = Object.keys(rolesConfig);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -117,7 +117,7 @@ const RoleSwitcher: React.FC = () => {
   const closeDropdown = () => setIsDropdownOpen(false);
 
   const handleRoleSelect = (role: any) => {
-    dispatch({ type: "SET_ROLE", payload: role });
+    setSelectedRole(role);
   };
 
   return (
@@ -128,14 +128,14 @@ const RoleSwitcher: React.FC = () => {
 
       <div className="relative inline-block">
         <RoleButton
-          role={state.role}
+          role={selectedRole}
           isOpen={isDropdownOpen}
           onClick={toggleDropdown}
         />
         <RoleDropdown
           isOpen={isDropdownOpen}
           roles={roles}
-          selectedRole={state.role}
+          selectedRole={selectedRole}
           onRoleSelect={handleRoleSelect}
           onClose={closeDropdown}
         />

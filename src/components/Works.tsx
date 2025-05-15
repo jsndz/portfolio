@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SectionHeading from "./SectionHeading";
 import { WorkProject } from "../context/types";
-import { useRoleContext } from "../context/RoleContext";
+import { useRole } from "../context/RoleContext";
 import { getProjectsForRole } from "../context/utils";
 import { X } from "lucide-react";
 
@@ -12,8 +12,8 @@ const Works: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<WorkProject | null>(
     null
   );
-  const { state, dispatch } = useRoleContext();
-  const projects = getProjectsForRole(state.role);
+  const { selectedRole, setSelectedRole } = useRole();
+  const projects = getProjectsForRole(selectedRole);
   const closeModal = () => setSelectedProject(null);
 
   return (

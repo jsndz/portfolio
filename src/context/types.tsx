@@ -1,3 +1,5 @@
+import { data } from "framer-motion/client";
+
 export interface WorkProject {
   id: number;
   title: string;
@@ -10,6 +12,21 @@ export interface WorkProject {
   challenges?: string;
   githubLink?: string;
   liveDemo?: string;
+}
+
+export interface RoleConfig {
+  projectIds: number[];
+  techStackIds: number[];
+  languages: string[];
+  tools: string[];
+  databases?: string[];
+  colors: {
+    primary: string;
+    background: string;
+    secondary: string;
+    tertiary: string;
+    accent: string;
+  };
 }
 
 export const projects: WorkProject[] = [
@@ -118,11 +135,18 @@ export const projects: WorkProject[] = [
     liveDemo: "https://fusion-mobile.demo",
   },
 ];
-
 export const rolesConfig = {
   "Frontend Developer": {
     projectIds: [1, 2],
-    techStack: ["React", "Tailwind", "Vite"],
+    techStackIds: [1, 2],
+    languages: [
+      "logos/HTML.svg",
+      "logos/CSS.svg",
+      "logos/JS.svg",
+      "logos/TS.svg",
+    ],
+    databases: [],
+    tools: ["logos/Tailwind.svg", "logos/NextJs.svg"],
     colors: {
       primary: "#1A73E8",
       background: "#FFFFFF",
@@ -131,9 +155,23 @@ export const rolesConfig = {
       accent: "#888888",
     },
   },
+
   "Backend Developer": {
     projectIds: [3, 4],
-    techStack: ["Node.js", "Go", "MongoDB"],
+    techStackIds: [1, 2],
+    languages: ["logos/TS.svg", "logos/golang.svg"],
+    databases: [
+      "/logos/MongoDB.svg",
+      "/logos/Mysql.svg",
+      "/logos/Pgsql.svg",
+      "/logos/Redis.svg",
+    ],
+    tools: [
+      "logos/ExpressJs.svg",
+      "logos/Graphql.svg",
+      "logos/SocketIo.svg",
+      "logos/websocket.svg",
+    ],
     colors: {
       primary: "#1E3A8A",
       background: "#F3F4F6",
@@ -142,9 +180,32 @@ export const rolesConfig = {
       accent: "#718096",
     },
   },
+
   "Full-Stack Developer": {
     projectIds: [1, 3],
-    techStack: ["React", "Node.js", "PostgreSQL"],
+    techStackIds: [1, 2],
+    databases: [
+      "/logos/MongoDB.svg",
+      "/logos/Mysql.svg",
+      "/logos/Pgsql.svg",
+      "/logos/Redis.svg",
+    ],
+    languages: [
+      "logos/HTML.svg",
+      "logos/CSS.svg",
+      "logos/JS.svg",
+      "logos/TS.svg",
+      "logos/golang.svg",
+    ],
+    tools: [
+      "logos/Tailwind.svg",
+      "logos/NextJs.svg",
+      "logos/ExpressJs.svg",
+      "logos/MongoDB.svg",
+      "logos/Graphql.svg",
+      "logos/SocketIo.svg",
+      "logos/websocket.svg",
+    ],
     colors: {
       primary: "#4B5563",
       background: "#FFFFFF",
@@ -154,3 +215,48 @@ export const rolesConfig = {
     },
   },
 };
+
+export interface TechStack {
+  id: number;
+  name: string;
+  logos: string[];
+}
+
+export const techStack: TechStack[] = [
+  {
+    id: 1,
+    name: "MERN Stack",
+    logos: [
+      "/logos/MongoDB.svg",
+      "/logos/ExpressJs.svg",
+      "/logos/React.svg",
+      "/logos/node.svg",
+    ],
+  },
+  {
+    id: 2,
+    name: "Go Fiber Stack",
+    logos: [
+      "/logos/golang.svg",
+      "/logos/Pgsql.svg",
+      "/logos/Redis.svg",
+      "/logos/websocket.svg",
+    ],
+  },
+  {
+    id: 3,
+    name: "TypeScript Frontend",
+    logos: [
+      "/logos/TS.svg",
+      "/logos/React.svg",
+      "/logos/NextJs.svg",
+      "/logos/Tailwind.svg",
+    ],
+  },
+
+  {
+    id: 4,
+    name: "Backend REST API",
+    logos: ["/logos/node.svg", "/logos/express.svg", "/logos/postgres.svg"],
+  },
+];

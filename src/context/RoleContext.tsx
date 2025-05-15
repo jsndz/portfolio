@@ -1,80 +1,5 @@
-import React, { createContext, useContext, useReducer } from "react";
-
-import { rolesConfig } from "./types";
-
-type RoleState = {
-  role: string;
-  config: (typeof rolesConfig)["Frontend Developer"];
-};
-
-const initialState: RoleState = {
-  role: "Frontend Developer",
-  config: rolesConfig["Frontend Developer"],
-};
-
-type Action = { type: "SET_ROLE"; payload: keyof typeof rolesConfig };
-
-const roleReducer = (state: RoleState, action: Action): RoleState => {
-  switch (action.type) {
-    case "SET_ROLE":
-      const roleConfig = rolesConfig[action.payload];
-
-      document.documentElement.style.setProperty(
-        "--primary-color",
-        roleConfig.colors.primary
-      );
-      document.documentElement.style.setProperty(
-        "--background-color",
-        roleConfig.colors.background
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-color",
-        roleConfig.colors.secondary
-      );
-      document.documentElement.style.setProperty(
-        "--tertiary-color",
-        roleConfig.colors.tertiary
-      );
-      document.documentElement.style.setProperty(
-        "--accent-color",
-        roleConfig.colors.accent
-      );
-
-      // Force repaint
-      document.documentElement.style.display = "none";
-      document.documentElement.offsetHeight;
-      document.documentElement.style.display = "";
-
-      return {
-        role: action.payload,
-        config: rolesConfig[action.payload],
-      };
-    default:
-      return state;
-  }
-};
-
-const RoleContext = createContext<{
-  state: RoleState;
-  dispatch: React.Dispatch<Action>;
-}>({
-  state: initialState,
-  dispatch: () => null,
-});
-
-export const RoleProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [state, dispatch] = useReducer(roleReducer, initialState);
-
-  return (
-    <RoleContext.Provider value={{ state, dispatch }}>
-      {children}
-    </RoleContext.Provider>
-  );
-};
-
-export const useRoleContext = () => useContext(RoleContext);
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { rolesConfig, techStack, TechStack } from "./types";
 
 type Role = keyof typeof rolesConfig;
 
@@ -82,8 +7,11 @@ interface RoleContextType {
   selectedRole: Role;
   setSelectedRole: React.Dispatch<React.SetStateAction<Role>>;
   roleDetails: {
-    projects: string[];
-    techStack: string[];
+    projectIds: string[];
+    techStack: TechStack[];
+    languages: string[];
+    tools: string[];
+    databases?: string[];
     colors: {
       primary: string;
       background: string;
@@ -94,32 +22,40 @@ interface RoleContextType {
   };
 }
 
-const RoleContextV2 = createContext<RoleContextType | null>(null);
+const RoleContext = createContext<RoleContextType | null>(null);
 
-export const RoleProviderV2: React.FC<{ children: React.ReactNode }> = ({
+export const RoleProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedRole, setSelectedRole] = useState<Role>(
-    "Full-Stack Developer"
-  );
+  const [selectedRole, setSelectedRole] = useState<Role>("Frontend Developer");
+
+  const roleConfig = rolesConfig[selectedRole];
   const roleDetails = {
-    ...rolesConfig[selectedRole as Role],
-    projects: rolesConfig[selectedRole as Role].projectIds.map(String),
+    ...roleConfig,
+    projectIds: roleConfig.projectIds.map((id) => id.toString()),
+    techStack: roleConfig.techStackIds.map(
+      (id) => techStack.find((stack) => stack.id === id)!
+    ),
   };
 
+  useEffect(() => {
+    const colors = roleConfig.colors;
+    Object.entries(colors).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(`--${key}-color`, value);
+    });
+  }, [selectedRole]);
+
   return (
-    <RoleContextV2.Provider
+    <RoleContext.Provider
       value={{ selectedRole, setSelectedRole, roleDetails }}
     >
       {children}
-    </RoleContextV2.Provider>
+    </RoleContext.Provider>
   );
 };
 
-export const useRole = () => useContext(RoleContextV2);
-function useState<T>(
-  initialValue: T
-): [T, React.Dispatch<React.SetStateAction<T>>] {
-  const [state, setState] = React.useState<T>(initialValue);
-  return [state, setState];
-}
+export const useRole = () => {
+  const context = useContext(RoleContext);
+  if (!context) throw new Error("useRole must be used within RoleProvider");
+  return context;
+};

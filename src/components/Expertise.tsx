@@ -2,113 +2,100 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SectionHeading from "./SectionHeading";
+import { useRole } from "../context/RoleContext";
+import { rolesConfig } from "../context/types";
+import { getTechStackForRole } from "../context/utils";
 
-interface Skill {
-  id: number;
-  name: string;
-  percentage: number;
-}
-
-interface Service {
-  id: number;
+interface IconGridProps {
   title: string;
-  description: string;
+  items: string[];
+  delayOffset?: number;
 }
 
-const skills: Skill[] = [
-  { id: 1, name: "Brand Strategy", percentage: 95 },
-  { id: 2, name: "UI/UX Design", percentage: 90 },
-  { id: 3, name: "Webflow Development", percentage: 85 },
-  { id: 4, name: "Framer Prototyping", percentage: 88 },
-  { id: 5, name: "Motion Design", percentage: 80 },
-];
-
-const services: Service[] = [
-  {
-    id: 1,
-    title: "Brand Identity",
-    description:
-      "Crafting distinctive brand identities that resonate with target audiences and stand out in competitive markets.",
-  },
-  {
-    id: 2,
-    title: "UI/UX Design",
-    description:
-      "Creating intuitive user interfaces and seamless experiences that enhance user engagement and satisfaction.",
-  },
-  {
-    id: 3,
-    title: "Webflow Development",
-    description:
-      "Building responsive, high-performance websites with Webflow's powerful CMS and animation capabilities.",
-  },
-  {
-    id: 4,
-    title: "Framer Prototyping",
-    description:
-      "Developing interactive prototypes that accurately represent the final product's functionality and design.",
-  },
-];
+const IconGrid: React.FC<IconGridProps> = ({
+  title,
+  items,
+  delayOffset = 0,
+}) => {
+  return (
+    <div>
+      <h4 className="text-xl font-medium mb-4">{title}</h4>
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {items.map((item, index) => (
+          <motion.img
+            key={index}
+            src={item}
+            alt={title}
+            className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: (index + delayOffset) * 0.05 }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Expertise: React.FC = () => {
-  const { ref: skillsRef, inView: skillsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const { selectedRole } = useRole();
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const { ref: servicesRef, inView: servicesInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const role = rolesConfig[selectedRole];
+  const techStacks = getTechStackForRole(selectedRole);
+  const { languages = [], tools = [], databases = [] } = role || {};
 
   return (
     <section id="expertise" className="bg-dynamic min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading number="04" title="Expertise" />
 
-        <div className="mt-16 md:mt-24 grid md:grid-cols-2 gap-16">
+        <div ref={ref} className="mt-16 md:mt-24 space-y-20">
+          {/* Tech Stack Section */}
           <div>
-            <h3 className="text-2xl font-medium mb-8">Skills</h3>
-            <div ref={skillsRef} className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={skill.id}>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="opacity-50">{skill.percentage}%</span>
-                  </div>
-                  <div className="h-1 w-full bg-lightgray">
-                    <motion.div
-                      className="h-full bg-primary"
-                      initial={{ width: 0 }}
-                      animate={
-                        skillsInView ? { width: `${skill.percentage}%` } : {}
-                      }
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                    ></motion.div>
-                  </div>
+            <h3 className="text-2xl font-medium mb-8">Tech Stack</h3>
+            <div className="space-y-8">
+              {techStacks.map((tech, techIndex) => (
+                <div key={tech.id}>
+                  <p className="font-semibold mb-2">{tech.name}</p>
+                  <motion.div
+                    className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {tech.logos.map((logo, i) => (
+                      <img
+                        key={i}
+                        src={logo}
+                        alt={tech.name}
+                        className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+                      />
+                    ))}
+                  </motion.div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-medium mb-8">Services</h3>
-            <div ref={servicesRef} className="space-y-8">
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <h4 className="text-xl font-medium mb-2">{service.title}</h4>
-                  <p className="text-tertiary leading-relaxed">
-                    {service.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+          {/* Languages & Tools Section */}
+          <div className="grid md:grid-cols-2 gap-12">
+            <IconGrid title="Languages" items={languages} />
+            <IconGrid
+              title="Tools"
+              items={tools}
+              delayOffset={languages.length}
+            />
           </div>
+
+          {/* Databases Section */}
+          {databases.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-medium mb-8">Databases</h3>
+              <IconGrid title="Databases" items={databases} />
+            </div>
+          )}
         </div>
       </div>
     </section>
