@@ -136,9 +136,40 @@ export const projects: WorkProject[] = [
   },
 ];
 export const rolesConfig = {
+  "Software Engineer": {
+    projectIds: [1, 3],
+    databases: [
+      "/logos/MongoDB.svg",
+      "/logos/Mysql.svg",
+      "/logos/Pgsql.svg",
+      "/logos/Redis.svg",
+    ],
+    languages: [
+      "logos/JS.svg",
+      "logos/TS.svg",
+      "logos/golang.svg",
+      "logos/C.svg",
+      "logos/C++.svg",
+    ],
+    tools: [
+      "logos/node.svg",
+      "logos/NextJs.svg",
+      "logos/ExpressJs.svg",
+      "logos/React.svg",
+      "logos/Graphql.svg",
+      "logos/SocketIo.svg",
+      "logos/websocket.svg",
+    ],
+    colors: {
+      primary: "#4B5563",
+      background: "#FFFFFF",
+      secondary: "#2C2F33",
+      tertiary: "#99AAB5",
+      accent: "#7289DA",
+    },
+  },
   "Frontend Developer": {
     projectIds: [1, 2],
-    techStackIds: [1, 2],
     languages: [
       "logos/HTML.svg",
       "logos/CSS.svg",
@@ -158,7 +189,6 @@ export const rolesConfig = {
 
   "Backend Developer": {
     projectIds: [3, 4],
-    techStackIds: [1, 2],
     languages: ["logos/TS.svg", "logos/golang.svg"],
     databases: [
       "/logos/MongoDB.svg",
@@ -183,7 +213,6 @@ export const rolesConfig = {
 
   "Full-Stack Developer": {
     projectIds: [1, 3],
-    techStackIds: [1, 2],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",

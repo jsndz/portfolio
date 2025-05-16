@@ -26,7 +26,7 @@ const RoleContext = createContext<RoleContextType | null>(null);
 export const RoleProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedRole, setSelectedRole] = useState<Role>("Frontend Developer");
+  const [selectedRole, setSelectedRole] = useState<Role>("Software Engineer");
 
   const roleConfig = rolesConfig[selectedRole];
   const roleDetails = {
