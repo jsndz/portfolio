@@ -20,7 +20,7 @@ const RoleButton: React.FC<RoleButtonProps> = ({ role, isOpen, onClick }) => {
       aria-expanded={isOpen}
       aria-haspopup="listbox"
     >
-      <span className="text-3xl">{role}</span>
+      <span className="text-6xl">{role}</span>
       <motion.span
         animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -122,24 +122,23 @@ const RoleSwitcher: React.FC = () => {
 
   return (
     <div className="relative inline-flex items-center space-x-2">
-      <h1 className="text-xl md:text-2xl lg:text-3xl text-gray-800 font-bold">
-        Building visually striking, inclusive, and intuitive digital spaces as a
+      <h1 className="text-xl md:text-2xl lg:text-6xl text-gray-800 font-bold">
+        Solving digital problems as a{" "}
+        <div className="relative inline-block">
+          <RoleButton
+            role={selectedRole}
+            isOpen={isDropdownOpen}
+            onClick={toggleDropdown}
+          />
+          <RoleDropdown
+            isOpen={isDropdownOpen}
+            roles={roles}
+            selectedRole={selectedRole}
+            onRoleSelect={handleRoleSelect}
+            onClose={closeDropdown}
+          />
+        </div>
       </h1>
-
-      <div className="relative inline-block">
-        <RoleButton
-          role={selectedRole}
-          isOpen={isDropdownOpen}
-          onClick={toggleDropdown}
-        />
-        <RoleDropdown
-          isOpen={isDropdownOpen}
-          roles={roles}
-          selectedRole={selectedRole}
-          onRoleSelect={handleRoleSelect}
-          onClose={closeDropdown}
-        />
-      </div>
     </div>
   );
 };

@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <RoleSwitcher></RoleSwitcher>
-        <div className="flex items-center justify-between gap-8 mt-12 relative">
+        <div className="absolute bottom-0 w-full flex items-center justify-between gap-8 p-6 pb-20">
           <MenuItems onItemSelect={scrollToSection} />
         </div>
       </div>

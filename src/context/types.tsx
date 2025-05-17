@@ -1,4 +1,4 @@
-import { data } from "framer-motion/client";
+import { data, desc } from "framer-motion/client";
 
 export interface WorkProject {
   id: number;
@@ -113,7 +113,7 @@ export const projects: WorkProject[] = [
     image:
       "https://images.pexels.com/photos/12089403/pexels-photo-12089403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     techStack: [
-      "NextJs",
+      "NextJS",
       "TailwindCSS",
       "Node.js",
       "Express",
@@ -138,7 +138,7 @@ export const projects: WorkProject[] = [
     image:
       "https://images.pexels.com/photos/5437588/pexels-photo-5437588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     techStack: [
-      "NextJs",
+      "NextJS",
       "TailwindCSS",
       "Golang",
       "Fiber",
@@ -221,24 +221,51 @@ export const rolesConfig = {
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
-      "/logos/Pgsql.svg",
+      "/logos/Postgres.svg",
       "/logos/Redis.svg",
     ],
     languages: [
       "logos/JS.svg",
       "logos/TS.svg",
-      "logos/golang.svg",
+      "logos/Golang.svg",
       "logos/C.svg",
       "logos/C++.svg",
     ],
     tools: [
-      "logos/node.svg",
-      "logos/NextJs.svg",
+      "logos/NodeJS.svg",
+      "logos/NextJS.svg",
       "logos/ExpressJs.svg",
       "logos/React.svg",
       "logos/Graphql.svg",
       "logos/SocketIo.svg",
-      "logos/websocket.svg",
+      "logos/Websocket.svg",
+    ],
+    services: [
+      {
+        service: "End-to-End Application Development",
+        description:
+          "Design and develop complete web applications with modern frontend (React, Next.js, ShadCN UI) and backend technologies (Node.js, Go), ensuring smooth client-server communication and optimal user experience.",
+      },
+      {
+        service: "High-Performance API Development & Microservices",
+        description:
+          "Build scalable REST APIs and GraphQL services using Go, Node.js, and TypeScript, with microservices architecture for modularity and scalability.",
+      },
+      {
+        service: "Database Design, Optimization & Real-Time Data Management",
+        description:
+          "Architect efficient database schemas and optimize queries using MongoDB, PostgreSQL, MySQL, and Redis, with real-time synchronization powered by WebSockets and Pion WebRTC.",
+      },
+      {
+        service: "Scalable Cloud Deployment & DevOps",
+        description:
+          "Deploy microservices and applications to cloud platforms (AWS, Vercel, GCP) with Docker , while setting up CI/CD pipelines for seamless integration and delivery.",
+      },
+      {
+        service: "Secure Authentication, Authorization & Data Encryption",
+        description:
+          "Implement robust authentication mechanisms with JWT, OAuth, and bcrypt, along with role-based access control and secure data encryption.",
+      },
     ],
     colors: {
       primary: "#4B5563",
@@ -257,7 +284,34 @@ export const rolesConfig = {
       "logos/TS.svg",
     ],
     databases: [],
-    tools: ["logos/Tailwind.svg", "logos/NextJs.svg"],
+    services: [
+      {
+        service: "Interactive and responsive UI development",
+        description:
+          "Build visually appealing, interactive user interfaces using React, Next.js, and ShadCN UI, ensuring smooth user experiences across all devices.",
+      },
+      {
+        service: "State management and smooth client-side routing",
+        description:
+          "Manage complex application state efficiently with Redux and Zustand, while handling client-side routing seamlessly using Next.js.",
+      },
+      {
+        service: "API integration and real-time data fetching",
+        description:
+          "Integrate REST APIs and GraphQL endpoints with Axios and Fetch, along with real-time updates through WebSockets and Socket.IO.",
+      },
+      {
+        service: "UI animations, transitions, and PWA support",
+        description:
+          "Enhance user experience with Framer Motion for smooth animations support for offline usage.",
+      },
+      {
+        service: "Cross-browser compatibility and performance optimization",
+        description:
+          "Ensure cross-browser consistency and optimize performance with lazy loading, code-splitting, and efficient resource management.",
+      },
+    ],
+    tools: ["logos/Tailwind.svg", "logos/NextJS.svg"],
     colors: {
       primary: "#1A73E8",
       background: "#FFFFFF",
@@ -269,18 +323,47 @@ export const rolesConfig = {
 
   "Backend Developer": {
     projectIds: [1, 9, 8, 7, 6, 5, 4],
-    languages: ["logos/TS.svg", "logos/golang.svg"],
+    languages: ["logos/TS.svg", "logos/Golang.svg"],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
-      "/logos/Pgsql.svg",
+      "/logos/Postgres.svg",
       "/logos/Redis.svg",
     ],
     tools: [
       "logos/ExpressJs.svg",
       "logos/Graphql.svg",
       "logos/SocketIo.svg",
-      "logos/websocket.svg",
+      "logos/Websocket.svg",
+    ],
+    services: [
+      {
+        service:
+          "High-performance API development with Go, Node.js, and TypeScript",
+        description:
+          "Build scalable REST APIs and GraphQL endpoints using Express.js for Node.js and Fiber for Go, with TypeScript for type safety.",
+      },
+      {
+        service:
+          "Microservices implementation and service-to-service communication",
+        description:
+          "Design modular, scalable microservices architecture using Go, Docker, and gRPC, with service discovery and load balancing.",
+      },
+      {
+        service: "Database architecture, indexing, and caching",
+        description:
+          "Design efficient database schemas with PostgreSQL, MongoDB, and MySQL, optimize queries, and implement caching with Redis.",
+      },
+      {
+        service: "Real-time event handling with WebSocket and Pion WebRTC",
+        description:
+          "Enable real-time communication for video calls, live chats, and collaborative features using WebSocket and Pion WebRTC.",
+      },
+      {
+        service: "Secure authentication, authorization, and data encryption",
+        description:
+          "Implement robust security protocols with JWT, OAuth, bcrypt for password hashing, and data encryption for secure access control.",
+      },
     ],
     colors: {
       primary: "#1E3A8A",
@@ -296,7 +379,7 @@ export const rolesConfig = {
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
-      "/logos/Pgsql.svg",
+      "/logos/Postgres.svg",
       "/logos/Redis.svg",
     ],
     languages: [
@@ -304,16 +387,43 @@ export const rolesConfig = {
       "logos/CSS.svg",
       "logos/JS.svg",
       "logos/TS.svg",
-      "logos/golang.svg",
+      "logos/Golang.svg",
     ],
     tools: [
       "logos/Tailwind.svg",
-      "logos/NextJs.svg",
+      "logos/NextJS.svg",
       "logos/ExpressJs.svg",
       "logos/MongoDB.svg",
       "logos/Graphql.svg",
       "logos/SocketIo.svg",
-      "logos/websocket.svg",
+      "logos/Websocket.svg",
+    ],
+    services: [
+      {
+        service: "End-to-end web application development",
+        description:
+          "Design and build full-stack applications with React and Next.js for frontend, Go and Node.js for backend, and MongoDB/PostgreSQL for data storage.",
+      },
+      {
+        service: "Database design and optimization",
+        description:
+          "Architect and optimize database schemas for high performance using PostgreSQL, MongoDB, and MySQL, with proper indexing and relationships.",
+      },
+      {
+        service: "Real-time communication",
+        description:
+          "Implement real-time features like live chat, video calls, and collaborative apps using WebSocket, Socket.IO, and Pion WebRTC.",
+      },
+      {
+        service: "Scalable microservices architecture and cloud deployment",
+        description:
+          "Design scalable microservices with Docker and deploy seamlessly to cloud platforms like AWS, Vercel, and GCP.",
+      },
+      {
+        service: "REST API and GraphQL service implementation",
+        description:
+          "Build powerful APIs with Express.js and GraphQL to handle data fetching and mutations efficiently, ensuring smooth client-server interaction.",
+      },
     ],
     colors: {
       primary: "#4B5563",
