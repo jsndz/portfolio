@@ -86,7 +86,7 @@ const About: React.FC = () => {
 
             <button
               onClick={() => scrollToSection("contact")}
-              className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary-dark transition duration-300"
+              className="text-2xl font-bold hover:text-accent transition-colors relative group"
             >
               Let's Connect
             </button>

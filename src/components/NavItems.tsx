@@ -8,9 +8,8 @@ const MenuItems: React.FC<MenuItemsProps> = ({ onItemSelect }) => {
   const menuItems = [
     { id: "about", number: "01", label: "About" },
     { id: "works", number: "02", label: "Works" },
-    { id: "awards", number: "03", label: "Awards" },
-    { id: "expertise", number: "04", label: "Expertise" },
-    { id: "contact", number: "05", label: "Contact" },
+    { id: "expertise", number: "03", label: "Expertise" },
+    { id: "contact", number: "03", label: "Contact" },
   ];
 
   return (
