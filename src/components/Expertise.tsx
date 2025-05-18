@@ -54,7 +54,7 @@ const Expertise: React.FC = () => {
   return (
     <section id="expertise" className="bg-dynamic min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <SectionHeading number="04" title="Expertise" />
+        <SectionHeading number="03" title="Expertise" />
 
         <div className="mt-16 md:mt-24 grid md:grid-cols-2 gap-16">
           <div>

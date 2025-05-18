@@ -19,7 +19,7 @@ const Works: React.FC = () => {
   return (
     <section id="works" className="min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <SectionHeading number="01" title="Works" />
+        <SectionHeading number="02" title="Works" />
 
         <div
           ref={ref}

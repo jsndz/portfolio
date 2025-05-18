@@ -32,7 +32,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="shadow-lg rounded-2xl overflow-hidden"
           >
-            <Spline scene="https://prod.spline.design/5oFSrTQC4DQpRIOG/scene.splinecode" />
+            <Spline scene="https://prod.spline.design/oYVykhmtXYS4lgZ7/scene.splinecode" />{" "}
           </motion.div>
 
           <motion.div

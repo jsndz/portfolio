@@ -16,9 +16,12 @@ const Contact: React.FC = () => {
       className="min-h-screen py-20 md:py-32 bg-primary text-background"
     >
       <div className="container mx-auto px-6 md:px-12">
-        <SectionHeading number="05" title="Contact" />
+        <SectionHeading number="04" title="Contact" />
 
-        <div ref={ref} className="mt-16 md:mt-24 grid md:grid-cols-2 gap-12">
+        <div
+          ref={ref}
+          className="mt-16 md:mt-24 grid md:grid-cols-2 gap-12 pt-10"
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -86,64 +89,9 @@ const Contact: React.FC = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* <div className="flex items-center justify-center h-full">
-              <img src="/qr-code.png" alt="QR Code" className="w-128 h-128" />
-            </div> */}
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-background text-opacity-70 mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full bg-transparent border-b border-background border-opacity-20 py-2 px-0 focus:outline-none focus:border-background text-background"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-background text-opacity-70 mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full bg-transparent border-b border-background border-opacity-20 py-2 px-0 focus:outline-none focus:border-background text-background"
-                  placeholder="Your email"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-background text-opacity-70 mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full bg-transparent border-b border-background border-opacity-20 py-2 px-0 focus:outline-none focus:border-background text-background"
-                  placeholder="Your message"
-                ></textarea>
-              </div>
-
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  className="py-3 px-8 bg-background text-primary font-medium hover:bg-background hover:bg-opacity-90 transition-colors"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
+            <h1 className="font-londrina text-[9rem] md:text-[8rem] text-background ">
+              Collaborate. Innovate. Create.
+            </h1>
           </motion.div>
         </div>
       </div>

@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-
+        londrina: ['"Londrina Shadow"', "cursive"],
         climateCrisis: ['"Climate Crisis"', "cursive"],
       },
       colors: {
