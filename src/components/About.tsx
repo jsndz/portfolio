@@ -19,33 +19,44 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="min-h-screen py-20 md:py-32">
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <SectionHeading number="01" title="About" />
 
         <div
           ref={ref}
-          className="mt-16 md:mt-24 grid md:grid-cols-2 gap-12 items-center"
+          className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
         >
+          {/* Left side card with image and description */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="shadow-lg rounded-2xl overflow-hidden"
+            className="shadow-lg rounded-2xl overflow-hidden bg-white dark:bg-[#111] flex flex-col items-center text-center p-6 sm:p-8"
           >
-            <Spline scene="https://prod.spline.design/oYVykhmtXYS4lgZ7/scene.splinecode" />{" "}
+            <img
+              src="/man.png"
+              alt="Developer illustration"
+              className="w-40 sm:w-48 md:w-56 h-auto object-contain mb-6"
+            />
+            <div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 text-primary">
+                Curious Engineer. Focused Builder.
+              </h3>
+              <p className="text-sm sm:text-base text-tertiary leading-relaxed max-w-md mx-auto">
+                I love solving real-world problems with code — whether it’s
+                building full-stack apps, exploring systems with C, or sketching
+                wild ideas on paper.
+              </p>
+            </div>
           </motion.div>
 
+          {/* Right side detailed content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center text-sm sm:text-base"
           >
-            <h3 className="text-2xl font-medium mb-6">
-              Hello, I'm Jaison Dsouza
-            </h3>
-            <h3 className="text-2xl font-medium mb-6">Developer | Engineer</h3>
-
             <p className="text-tertiary mb-6 leading-relaxed">
               My coding journey began in my freshman year with Node.js for
               backend development, sparked by my friends' encouragement. I’m a
@@ -60,33 +71,35 @@ const About: React.FC = () => {
               SQLite clone to understand database internals.
             </p>
             <p className="text-tertiary mb-10 leading-relaxed">
-              When I’m not coding, I’m either reading about novels or sketching
-              app ideas with pen and paper.
+              When I’m not coding, I’m either reading novels or sketching app
+              ideas with pen and paper.
             </p>
 
-            <div className="grid grid-cols-2 gap-8 mb-10">
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-8 mb-10 text-center sm:text-left">
               <div>
-                <h4 className="text-sm uppercase tracking-wider mb-2 opacity-50">
+                <h4 className="text-xs uppercase tracking-wider mb-2 opacity-50">
                   Experience
                 </h4>
-                <p className="text-tertiary">2+ Years</p>
+                <p className="text-tertiary font-medium">2+ Years</p>
               </div>
               <div>
-                <h4 className="text-sm uppercase tracking-wider mb-2 opacity-50">
+                <h4 className="text-xs uppercase tracking-wider mb-2 opacity-50">
                   Repositories
                 </h4>
-                <p className="text-tertiary">50+</p>
+                <p className="text-tertiary font-medium">50+</p>
               </div>
               <div className="col-span-2">
-                <h2 className="text-lg uppercase tracking-wider mb-2 opacity-50">
+                <h4 className="text-xs uppercase tracking-wider mb-2 opacity-50">
                   Based in Mangalore, India
-                </h2>
+                </h4>
               </div>
             </div>
 
+            {/* Button */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-2xl font-bold hover:text-accent transition-colors relative group"
+              className="text-lg sm:text-xl font-bold hover:text-accent transition-colors relative group"
             >
               Let's Connect
             </button>

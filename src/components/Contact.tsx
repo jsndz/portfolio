@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
 
         <div
           ref={ref}
-          className="mt-16 md:mt-24 grid md:grid-cols-2 gap-12 pt-10"
+          className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 pt-10"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -44,8 +44,8 @@ const Contact: React.FC = () => {
                     Email
                   </h4>
                   <a
-                    href="mailto:hello@johnmoore.design"
-                    className="text-background hover:text-background hover:underline"
+                    href="mailto:jaisondz9360@gmail.com"
+                    className="text-background hover:underline break-words"
                   >
                     jaisondz9360@gmail.com
                   </a>
@@ -69,13 +69,15 @@ const Contact: React.FC = () => {
                 <div className="flex space-x-5">
                   <a
                     href="https://www.linkedin.com/in/jaison-dsouza-414082263/"
-                    className="text-background hover:text-background hover:opacity-70 transition-opacity"
+                    className="text-background hover:opacity-70 transition-opacity"
+                    aria-label="LinkedIn"
                   >
                     <Linkedin size={20} />
                   </a>
                   <a
                     href="https://github.com/jsndz"
-                    className="text-background hover:text-background hover:opacity-70 transition-opacity"
+                    className="text-background hover:opacity-70 transition-opacity"
+                    aria-label="GitHub"
                   >
                     <Github size={20} />
                   </a>
@@ -88,9 +90,12 @@ const Contact: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center justify-center"
           >
-            <h1 className="font-londrina text-[9rem] md:text-[8rem] text-background ">
-              Collaborate. Innovate. Create.
+            <h1 className="font-londrina text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] text-center leading-tight break-words">
+              Collaborate. <br className="hidden sm:block" />
+              Innovate. <br className="hidden sm:block" />
+              Create.
             </h1>
           </motion.div>
         </div>

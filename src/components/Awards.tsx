@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import SectionHeading from './SectionHeading';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./SectionHeading";
 
 interface Award {
   id: number;
@@ -17,29 +17,32 @@ const awards: Award[] = [
     title: "Best UI Design",
     organization: "Awwwards",
     year: "2024",
-    description: "Recognition for exceptional user interface design in the Novus E-Commerce project."
+    description:
+      "Recognition for exceptional user interface design in the Novus E-Commerce project.",
   },
   {
     id: 2,
     title: "Design Excellence",
     organization: "CSS Design Awards",
     year: "2023",
-    description: "Award for outstanding creative direction and technical implementation."
+    description:
+      "Award for outstanding creative direction and technical implementation.",
   },
   {
     id: 3,
     title: "Brand of the Year",
     organization: "Graphis",
     year: "2022",
-    description: "Awarded for the comprehensive branding work for Altitude."
+    description: "Awarded for the comprehensive branding work for Altitude.",
   },
   {
     id: 4,
     title: "Innovation in Digital Design",
     organization: "D&AD",
     year: "2021",
-    description: "Recognition for pushing boundaries in digital product design."
-  }
+    description:
+      "Recognition for pushing boundaries in digital product design.",
+  },
 ];
 
 const Awards: React.FC = () => {
@@ -49,10 +52,13 @@ const Awards: React.FC = () => {
   });
 
   return (
-    <section id="awards" className="min-h-screen py-20 md:py-32 bg-lightgray bg-opacity-30">
+    <section
+      id="awards"
+      className="min-h-screen py-20 md:py-32 bg-lightgray bg-opacity-30"
+    >
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading number="03" title="Awards" />
-        
+
         <div ref={ref} className="mt-16 md:mt-24">
           {awards.map((award, index) => (
             <motion.div

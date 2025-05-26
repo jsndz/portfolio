@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
           className="mb-12"
         >
           <h1
-            className=" text-5xl md:text-7xl lg:text-[15.5rem] font-bold tracking-tight w-full leading-none"
+            className="font-bold tracking-tight leading-none w-full text-[5rem] sm:text-[8rem] md:text-[9rem] lg:text-[10rem] xl:text-[13rem] 2xl:text-[14.5rem]"
             style={{
               backgroundImage:
                 "url(https://cdn.prod.website-files.com/66571474d48f3e8c7c14896c/66571474d48f3e8c7c1489aa_hero-heading-bg.jpg)",
@@ -31,8 +31,8 @@ const Hero: React.FC = () => {
               color: "transparent",
               backgroundPosition: "center",
               backgroundSize: "cover",
-              letterSpacing: "-0.1em",
-              whiteSpace: "nowrap",
+              letterSpacing: "-0.05em",
+              whiteSpace: "normal",
             }}
           >
             JAISON DSOUZA

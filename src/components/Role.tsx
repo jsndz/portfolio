@@ -13,19 +13,21 @@ interface RoleButtonProps {
 const RoleButton: React.FC<RoleButtonProps> = ({ role, isOpen, onClick }) => {
   return (
     <motion.button
-      className="inline-flex items-center gap-1 font-bold text-gray-900 border-b-2 border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 px-1"
+      className="inline-flex items-center gap-2 font-bold text-gray-900 border-b-2 border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 px-1"
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-expanded={isOpen}
       aria-haspopup="listbox"
     >
-      <span className="text-6xl">{role}</span>
+      <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl whitespace-nowrap">
+        {role}
+      </span>
       <motion.span
         animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <ChevronDown size={16} className="text-gray-700" />
+        <ChevronDown size={20} className="text-gray-700" />
       </motion.span>
     </motion.button>
   );
