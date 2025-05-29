@@ -1,5 +1,3 @@
-import { data, desc } from "framer-motion/client";
-
 export interface WorkProject {
   id: number;
   title: string;
@@ -107,7 +105,7 @@ export const projects: WorkProject[] = [
     id: 5,
     title: "Mayaverse",
     description:
-      "Mayaverse is a collaborative platform built using [Next.js](w) and [TypeScript](w), designed to create and manage virtual spaces. It leverages a monorepo structure with [Turborepo](w) for efficient development and build processes.",
+      "Mayaverse is a collaborative platform built for developers designed to create and manage virtual spaces.",
     category: "Full-Stack Development",
     year: "2022",
     image:
@@ -123,7 +121,8 @@ export const projects: WorkProject[] = [
     keyFeatures: [
       "Test driven development",
       "Create and manage virtual spaces",
-      "Real-time collaboration and updates",
+      "Real-time chat ",
+      "1v1 Video Calls",
       "User authentication and authorization",
     ],
     challenges: "Handling avatar locations.",
@@ -217,7 +216,7 @@ export const projects: WorkProject[] = [
 ];
 export const rolesConfig = {
   "Software Engineer": {
-    projectIds: [1, 2, 4, 5, 6],
+    projectIds: [5, 1, 2, 4, 6],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
@@ -322,7 +321,7 @@ export const rolesConfig = {
   },
 
   "Backend Developer": {
-    projectIds: [1, 9, 8, 7, 6, 5, 4],
+    projectIds: [5, 9, 8, 7, 6, 4],
     languages: ["logos/TS.svg", "logos/Golang.svg"],
     databases: [
       "/logos/MongoDB.svg",
@@ -375,7 +374,7 @@ export const rolesConfig = {
   },
 
   "Full-Stack Developer": {
-    projectIds: [1, 4, 5, 6],
+    projectIds: [5, 1, 4, 6],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
