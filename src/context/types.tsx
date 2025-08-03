@@ -213,10 +213,176 @@ export const projects: WorkProject[] = [
     challenges: "Nested comments and likes.",
     githubLink: "https://github.com/jsndz/twitter",
   },
+  {
+    id: 10,
+    title: "SafeTrace",
+    description:
+      "A real-time location tracking system using Kafka and modular Go services with live updates via SSE.",
+    category: "Backend Development",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/313707/pexels-photo-313707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: [
+      "Go",
+      "Kafka",
+      "React",
+      "Postgres",
+      "Docker",
+      "Kubernetes",
+      "SSE",
+    ],
+    keyFeatures: [
+      "Real-time location tracking from frontend",
+      "Geo-fencing and proximity detection",
+      "Kafka-based communication with multiple consumer services",
+      "Live updates via Server-Sent Events (SSE)",
+      "Dockerized microservices and Kubernetes-ready",
+    ],
+    challenges:
+      "Coordinating real-time data flow and debugging Kafka consumers.",
+    githubLink: "https://github.com/jsndz/safetrace",
+  },
+  {
+    id: 11,
+    title: "Signalbus",
+    description:
+      "Event-driven notification hub that sends real-time email and SMS alerts using Kafka and cloud APIs.",
+    category: "Backend Development",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/73910/pexels-photo-73910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: [
+      "Go",
+      "Kafka",
+      "Docker",
+      "Mailgun",
+      "Twilio",
+      "Prometheus",
+      "Grafana",
+    ],
+    keyFeatures: [
+      "Microservices for Email and SMS notifications",
+      "Event distribution using Kafka",
+      "Observability with Prometheus and Grafana",
+      "CI/CD with GitHub Actions",
+      "Deployed on Railway with Docker Compose",
+    ],
+    challenges: "Reliable message delivery and monitoring Kafka failures.",
+    githubLink: "https://github.com/jsndz/signalbus",
+  },
+  {
+    id: 12,
+    title: "HypeCard",
+    description:
+      "Create personalized, AI-generated video business cards using a simple form and automated backend logic.",
+    category: "Full-Stack Development",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: [
+      "Next.js",
+      "TailwindCSS",
+      "Supabase",
+      "Tavus API",
+      "RevenueCat",
+      "Vercel",
+    ],
+    keyFeatures: [
+      "AI-generated talking video cards via Tavus API",
+      "JWT-based authentication with Supabase Auth",
+      "Freemium logic with Pro tier using RevenueCat",
+      "User dashboard and video preview/download",
+      "Unique shareable video URLs like hypecard.me/abc123",
+    ],
+    challenges:
+      "Integrating third-party APIs (Tavus, RevenueCat) with access control.",
+    githubLink: "https://github.com/jsndz/hypecard",
+    liveDemo: "https://hypecard.me",
+  },
+  {
+    id: 13,
+    title: "Codexa",
+    description:
+      "An AI-powered GitHub App that performs automated code reviews with static analysis and LLM-driven insights.",
+    category: "Developer Tools",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: [
+      "Node.js",
+      "TypeScript",
+      "GitHub API",
+      "Octokit",
+      "tree-sitter",
+      "Ollama",
+      "Express.js",
+    ],
+    keyFeatures: [
+      "Automated code review on every GitHub push",
+      "Static analysis using AST parsing with tree-sitter",
+      "Secret detection and API key leak prevention",
+      "LLM-based suggestions with contextual explanations",
+      "Reports via GitHub Checks with inline annotations",
+    ],
+    challenges:
+      "Combining AST parsing with LLMs for meaningful and actionable feedback.",
+    githubLink: "https://github.com/jsndz/codexa",
+  },
+  {
+    id: 14,
+    title: "Projector CLI",
+    description:
+      "A fast and flexible CLI tool to scaffold full-stack projects or custom templates in seconds, helping streamline prototyping and learning.",
+    category: "Developer Tools",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/6437728/pexels-photo-6437728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: ["Node.js", "TypeScript", "Commander.js", "Inquirer.js"],
+    keyFeatures: [
+      "Scaffold projects using full-stack or custom templates",
+      "Interactive CLI with options to create, view, or delete templates",
+      "Auto-generates file structures and runs setup commands",
+      "Supports Go + React, Node + TypeScript, and more",
+      "Future-ready for remote GitHub template support",
+    ],
+    challenges:
+      "Designed and implemented a modular CLI architecture with support for dynamic templates.",
+    githubLink: "https://github.com/jsndz/projector",
+  },
+  {
+    id: 15,
+    title: "Mimir – Stateless Telegram Notes Bot",
+    description:
+      "A zero-database Telegram bot for organizing and sharing study notes (PDFs/images) using folder-like tags. Designed for exam groups and classrooms.",
+    category: "Bots",
+    year: "2025",
+    image:
+      "https://images.pexels.com/photos/8438911/pexels-photo-8438911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    techStack: ["Node.js", "Telegraf.js", "Render"],
+    keyFeatures: [
+      "Upload notes using /upload [topic] [subtopic]",
+      "Uses Telegram chat history as the archive (no database)",
+      "Searchable via Telegram’s built-in search",
+      "Lightweight, privacy-friendly, and free to host",
+      "Ideal for college groups, exam prep, and subject-wise sharing",
+    ],
+    challenges:
+      "Built a stateless bot that uses Telegram itself as storage and indexing mechanism, avoiding the need for databases or external filesystems.",
+    githubLink: "https://github.com/jsndz/mimir",
+  },
 ];
 export const rolesConfig = {
   "Software Engineer": {
-    projectIds: [5, 1, 2, 4, 6],
+    projectIds: [
+      1, // Noatric – Full-stack ecommerce
+      2, // Skysense – Real-time weather with React
+      4, // PrimeBoard – Real-time product leaderboard
+      5, // Mayaverse – Full-stack collab space with TDD and video calls
+      6, // Readit – Reddit clone with microservices & caching
+      10, // SafeTrace – Real-time Kafka + SSE system
+      11, // Signalbus – Kafka-driven notification microservices
+      12, // HypeCard – AI video cards, third-party API integration
+    ],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
@@ -275,7 +441,14 @@ export const rolesConfig = {
     },
   },
   "Frontend Developer": {
-    projectIds: [1, 4, 5, 6, 2],
+    projectIds: [
+      1, // Noatric – React-based ecommerce
+      2, // Skysense – Real-time weather app
+      4, // PrimeBoard – Visual leaderboard
+      5, // Mayaverse – Collab with video chat UI
+      6, // Readit – Reddit-style interface
+      12, // HypeCard – Form, dashboard, shareable video links
+    ],
     languages: [
       "logos/HTML.svg",
       "logos/CSS.svg",
@@ -321,7 +494,16 @@ export const rolesConfig = {
   },
 
   "Backend Developer": {
-    projectIds: [5, 9, 8, 7, 6, 4],
+    projectIds: [
+      5, // Mayaverse – TDD, real-time, backend-heavy
+      6, // Readit – Go, caching, microservices
+      7, // ercel – Redis queue, S3/R2, microservices
+      8, // Airbourne – AMQP, microservices
+      9, // Twitter Backend – Real-time notif, nested data
+      10, // SafeTrace – SSE, Kafka, microservices
+      11, // Signalbus – Kafka, Prometheus, Twilio/Mailgun
+      13, // Codexa – GitHub app, AST parsing, LLM insights
+    ],
     languages: ["logos/TS.svg", "logos/Golang.svg"],
     databases: [
       "/logos/MongoDB.svg",
@@ -374,7 +556,14 @@ export const rolesConfig = {
   },
 
   "Full-Stack Developer": {
-    projectIds: [5, 1, 4, 6],
+    projectIds: [
+      1, // Noatric – Full ecom with auth and admin
+      4, // PrimeBoard – Leaderboard with real-time updates
+      5, // Mayaverse – Real-time chat + video, full-stack infra
+      6, // Readit – Microservices + frontend clone
+      12, // HypeCard – AI app with frontend + backend
+      14, // Projector CLI – CLI that scaffolds full-stack templates
+    ],
     databases: [
       "/logos/MongoDB.svg",
       "/logos/Mysql.svg",
