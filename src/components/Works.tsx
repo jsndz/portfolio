@@ -12,9 +12,14 @@ const Works: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<WorkProject | null>(
     null
   );
-  const { selectedRole, setSelectedRole } = useRole();
+  const [imageIndex, setImageIndex] = useState(0);
+  const { selectedRole } = useRole();
   const projects = getProjectsForRole(selectedRole);
-  const closeModal = () => setSelectedProject(null);
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    setImageIndex(0);
+  };
 
   return (
     <section id="works" className="min-h-screen py-20 md:py-32">
@@ -37,7 +42,7 @@ const Works: React.FC = () => {
               <div className="relative overflow-hidden">
                 <div className="aspect-[4/3] w-full">
                   <img
-                    src={project.image}
+                    src={project.image[0]}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -66,18 +71,59 @@ const Works: React.FC = () => {
             onClick={closeModal}
           >
             <motion.div
-              className="bg-[#f9f9f9] max-w-4xl w-full rounded-2xl overflow-hidden shadow-lg relative"
+              className="bg-[#f9f9f9] max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-lg relative"
               initial={{ scale: 0.95, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 50 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-80 object-cover"
-              />
+              {selectedProject.video ? (
+                <iframe
+                  src={`${selectedProject.video}?autoplay=1&mute=1&loop=1&playlist=lh2DtaT6jxw`}
+                  className="w-full aspect-video"
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title="Project Video"
+                />
+              ) : (
+                <div className="relative w-full">
+                  <img
+                    src={selectedProject.image[imageIndex]}
+                    alt={selectedProject.title}
+                    className="w-full max-h-[60vh] object-contain"
+                  />
+                  {selectedProject.image.length > 1 && (
+                    <div className="absolute inset-0 flex justify-between items-center px-4">
+                      <button
+                        onClick={() =>
+                          setImageIndex((prev) =>
+                            prev === 0
+                              ? selectedProject.image.length - 1
+                              : prev - 1
+                          )
+                        }
+                        className="bg-black bg-opacity-30 text-white px-2 py-1 rounded"
+                      >
+                        ←
+                      </button>
+                      <button
+                        onClick={() =>
+                          setImageIndex((prev) =>
+                            prev === selectedProject.image.length - 1
+                              ? 0
+                              : prev + 1
+                          )
+                        }
+                        className="bg-black bg-opacity-30 text-white px-2 py-1 rounded"
+                      >
+                        →
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className="p-8 space-y-6">
                 <X

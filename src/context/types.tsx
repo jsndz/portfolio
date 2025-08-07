@@ -4,12 +4,13 @@ export interface WorkProject {
   description: string;
   category: string;
   year: string;
-  image: string;
+  image: string[];
   techStack: string[];
   keyFeatures: string[];
   challenges?: string;
   githubLink?: string;
   liveDemo?: string;
+  video?: string;
 }
 
 export interface RoleConfig {
@@ -34,8 +35,9 @@ export const projects: WorkProject[] = [
     description: "A complete ecommerce store  for scifi weapons and tools.",
     category: "Full-Stack Development",
     year: "2024",
-    image:
+    image: [
       "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["React", "TailwindCSS", "Node.js", "Express", "MongoDB"],
 
     keyFeatures: [
@@ -55,8 +57,9 @@ export const projects: WorkProject[] = [
       "Get accurate, real-time weather updates, forecasts, and climate insights for any location.",
     category: "Full-Stack Development",
     year: "2023",
-    image:
+    image: [
       "https://api.microlink.io/?url=https%3A%2F%2Fjsndz.github.io%2FskysenseDeploy%2F&overlay.browser=dark&screenshot=true&embed=screenshot.url",
+    ],
     techStack: ["React", "TailwindCSS"],
     keyFeatures: [
       "Real-time weather updates",
@@ -73,8 +76,9 @@ export const projects: WorkProject[] = [
     description: "A simple sqlite clone built with C.",
     category: "Database",
     year: "2023",
-    image:
+    image: [
       "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["C"],
     keyFeatures: [
       "Supports basic SQL operations like insert and select through a REPL interface",
@@ -90,8 +94,9 @@ export const projects: WorkProject[] = [
     description: "A leaderboard for product showcase.",
     category: "Full-Stack Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/1293269/pexels-photo-1293269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["React", "TailwindCSS", "Node.js", "Express", "MongoDB"],
     keyFeatures: [
       "Long pooling for real-time updates",
@@ -108,8 +113,9 @@ export const projects: WorkProject[] = [
       "Mayaverse is a collaborative platform built for developers designed to create and manage virtual spaces.",
     category: "Full-Stack Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/12089403/pexels-photo-12089403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: [
       "NextJS",
       "TailwindCSS",
@@ -134,8 +140,9 @@ export const projects: WorkProject[] = [
     description: "Minimalistic reddit clone.",
     category: "Full-Stack Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/5437588/pexels-photo-5437588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: [
       "NextJS",
       "TailwindCSS",
@@ -160,8 +167,9 @@ export const projects: WorkProject[] = [
     description: "Minimalistic Vercel clone.",
     category: "Backend Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/17323801/pexels-photo-17323801/free-photo-of-network-rack.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["Typescript", "NodeJs", "Express", "S3 bucket"],
     keyFeatures: [
       "Redis-based Message Queue System",
@@ -178,8 +186,9 @@ export const projects: WorkProject[] = [
     description: "Functional Backend for Flight booking application.",
     category: "Backend Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/46148/aircraft-jet-landing-cloud-46148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: [
       "NodeJS",
       "Express",
@@ -202,8 +211,9 @@ export const projects: WorkProject[] = [
     description: "Functional backend of a twitter.",
     category: "Backend Development",
     year: "2022",
-    image:
+    image: [
       "https://images.pexels.com/photos/5417837/pexels-photo-5417837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["NodeJS", "Express", "MongoDB", "Mongoose"],
     keyFeatures: [
       "Nested comments and likes",
@@ -220,8 +230,7 @@ export const projects: WorkProject[] = [
       "A real-time location tracking system using Kafka and modular Go services with live updates via SSE.",
     category: "Backend Development",
     year: "2025",
-    image:
-      "https://images.pexels.com/photos/313707/pexels-photo-313707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: ["/projects/safetrace/1.png", "/projects/safetrace/2 (1).png"],
     techStack: [
       "Go",
       "Kafka",
@@ -249,8 +258,13 @@ export const projects: WorkProject[] = [
       "Event-driven notification hub that sends real-time email and SMS alerts using Kafka and cloud APIs.",
     category: "Backend Development",
     year: "2025",
-    image:
-      "https://images.pexels.com/photos/73910/pexels-photo-73910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: [
+      "/projects/signalbus/2.png",
+      "/projects/signalbus/1.png",
+      "/projects/signalbus/3.png",
+      "/projects/signalbus/4.png",
+    ],
+
     techStack: [
       "Go",
       "Kafka",
@@ -277,8 +291,9 @@ export const projects: WorkProject[] = [
       "Create personalized, AI-generated video business cards using a simple form and automated backend logic.",
     category: "Full-Stack Development",
     year: "2025",
-    image:
+    image: [
       "https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: [
       "Next.js",
       "TailwindCSS",
@@ -306,8 +321,9 @@ export const projects: WorkProject[] = [
       "An AI-powered GitHub App that performs automated code reviews with static analysis and LLM-driven insights.",
     category: "Developer Tools",
     year: "2025",
-    image:
+    image: [
       "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: [
       "Node.js",
       "TypeScript",
@@ -317,6 +333,7 @@ export const projects: WorkProject[] = [
       "Ollama",
       "Express.js",
     ],
+    video: "https://www.youtube.com/embed/lh2DtaT6jxw",
     keyFeatures: [
       "Automated code review on every GitHub push",
       "Static analysis using AST parsing with tree-sitter",
@@ -335,8 +352,9 @@ export const projects: WorkProject[] = [
       "A fast and flexible CLI tool to scaffold full-stack projects or custom templates in seconds, helping streamline prototyping and learning.",
     category: "Developer Tools",
     year: "2025",
-    image:
+    image: [
       "https://images.pexels.com/photos/6437728/pexels-photo-6437728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["Node.js", "TypeScript", "Commander.js", "Inquirer.js"],
     keyFeatures: [
       "Scaffold projects using full-stack or custom templates",
@@ -356,8 +374,9 @@ export const projects: WorkProject[] = [
       "A zero-database Telegram bot for organizing and sharing study notes (PDFs/images) using folder-like tags. Designed for exam groups and classrooms.",
     category: "Bots",
     year: "2025",
-    image:
+    image: [
       "https://images.pexels.com/photos/8438911/pexels-photo-8438911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     techStack: ["Node.js", "Telegraf.js", "Render"],
     keyFeatures: [
       "Upload notes using /upload [topic] [subtopic]",
@@ -374,14 +393,10 @@ export const projects: WorkProject[] = [
 export const rolesConfig = {
   "Software Engineer": {
     projectIds: [
-      1, // Noatric – Full-stack ecommerce
-      2, // Skysense – Real-time weather with React
-      4, // PrimeBoard – Real-time product leaderboard
       5, // Mayaverse – Full-stack collab space with TDD and video calls
-      6, // Readit – Reddit clone with microservices & caching
       10, // SafeTrace – Real-time Kafka + SSE system
       11, // Signalbus – Kafka-driven notification microservices
-      12, // HypeCard – AI video cards, third-party API integration
+      13, // Codexa – GitHub app, AST parsing, LLM insights
     ],
     databases: [
       "/logos/MongoDB.svg",
@@ -443,8 +458,6 @@ export const rolesConfig = {
   "Frontend Developer": {
     projectIds: [
       1, // Noatric – React-based ecommerce
-      2, // Skysense – Real-time weather app
-      4, // PrimeBoard – Visual leaderboard
       5, // Mayaverse – Collab with video chat UI
       6, // Readit – Reddit-style interface
       12, // HypeCard – Form, dashboard, shareable video links
@@ -495,14 +508,10 @@ export const rolesConfig = {
 
   "Backend Developer": {
     projectIds: [
-      5, // Mayaverse – TDD, real-time, backend-heavy
-      6, // Readit – Go, caching, microservices
-      7, // ercel – Redis queue, S3/R2, microservices
-      8, // Airbourne – AMQP, microservices
-      9, // Twitter Backend – Real-time notif, nested data
       10, // SafeTrace – SSE, Kafka, microservices
       11, // Signalbus – Kafka, Prometheus, Twilio/Mailgun
       13, // Codexa – GitHub app, AST parsing, LLM insights
+      8, // Airbourne – AMQP, microservices
     ],
     languages: ["logos/TS.svg", "logos/Golang.svg"],
     databases: [
@@ -558,11 +567,9 @@ export const rolesConfig = {
   "Full-Stack Developer": {
     projectIds: [
       1, // Noatric – Full ecom with auth and admin
-      4, // PrimeBoard – Leaderboard with real-time updates
       5, // Mayaverse – Real-time chat + video, full-stack infra
       6, // Readit – Microservices + frontend clone
       12, // HypeCard – AI app with frontend + backend
-      14, // Projector CLI – CLI that scaffolds full-stack templates
     ],
     databases: [
       "/logos/MongoDB.svg",
